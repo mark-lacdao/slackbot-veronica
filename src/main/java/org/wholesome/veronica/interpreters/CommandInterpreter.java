@@ -2,7 +2,6 @@ package org.wholesome.veronica.interpreters;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
-import org.junit.internal.runners.TestMethod;
 import org.wholesome.veronica.util.ResourceFileReader;
 
 import java.io.IOException;
