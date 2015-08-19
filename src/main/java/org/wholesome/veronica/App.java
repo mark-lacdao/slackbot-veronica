@@ -54,8 +54,4 @@ public class App {
         }
     }
 
-    private static String getCommand(String message) {
-        return message.substring(message.indexOf(" "), message.length()).trim();
-    }
-
 }

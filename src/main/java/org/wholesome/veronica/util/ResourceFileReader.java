@@ -1,6 +1,7 @@
 package org.wholesome.veronica.util;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,6 +11,8 @@ import java.util.Properties;
  * Created by Mark.Lacdao on 07/08/2015.
  */
 public class ResourceFileReader {
+
+    private static final Logger LOG = Logger.getLogger(ResourceFileReader.class);
 
     public ResourceFileReader() {
     }
@@ -23,10 +26,15 @@ public class ResourceFileReader {
         return Thread.currentThread().getContextClassLoader().getResourceAsStream(filename);
     }
 
-    protected static Properties getProperties(String filename) throws IOException {
+    public static Properties getProperties(String filename) {
         InputStream inputStream = getInputStream(filename);
         Properties properties = new Properties();
-        properties.load(inputStream);
+        try {
+            properties.load(inputStream);
+        } catch (IOException e) {
+            LOG.error(e.getMessage(), e);
+            e.printStackTrace();
+        }
         return properties;
     }
 }
